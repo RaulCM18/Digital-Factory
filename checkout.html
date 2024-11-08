@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - DIGITAL FACTORY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">DIGITAL FACTORY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contenido del Checkout -->
+    <div class="container mt-5 pt-5">
+        <h2>Finalizar Compra</h2>
+        <form id="checkout-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre Completo</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="payment-method" class="form-label">Método de Pago</label>
+                <select class="form-select" id="payment-method" onchange="togglePaymentFields()" required>
+                    <option value="">Selecciona un método</option>
+                    <option value="cash">Efectivo</option>
+                    <option value="card">Tarjeta</option>
+                </select>
+            </div>
+            <div id="card-details" style="display: none;">
+                <div class="mb-3">
+                    <label for="card-number" class="form-label">Número de Tarjeta</label>
+                    <input type="text" class="form-control" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                </div>
+                <div class="mb-3">
+                    <label for="expiry-date" class="form-label">Fecha de Expiración</label>
+                    <input type="text" class="form-control" id="expiry-date" placeholder="MM/AA" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="XXX" required>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" onclick="completePurchase()">Completar Compra</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="custom-footer">
+        <div class="container">
+            <section class="mb-1">
+                <p>Derechos Reservados © DIGITAL FACTORY</p>
+            </section>
+        </div>
+    </footer>
+
+    <script>
+        function togglePaymentFields() {
+            const paymentMethod = document.getElementById('payment-method').value;
+            const cardDetails = document.getElementById('card-details');
+            if (paymentMethod === 'card') {
+                cardDetails.style.display = 'block';
+            } else {
+                cardDetails.style.display = 'none';
+            }
+        }
+
+        function completePurchase() {
+            // Mostrar mensaje de éxito
+            alert('¡Compra completada con éxito!');
+
+            // Redirigir a la vista de productos
+            window.location.href = 'store.html'; // Cambia 'store.html' por la ruta correcta de tu vista de productos
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
